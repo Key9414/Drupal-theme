@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * Bayteq Developer Portal - Login Page.
+ *
+ * Pantalla 1: Login - Portal de Desarrolladores
+ */
+#}
+
+<div class="login-page">
+  <div class="login-container">
+    {# Logo #}
+    <div class="login-logo">
+      <span class="login-logo__text">bayteq</span>
+    </div>
+
+    {# Title #}
+    <h1 class="login-title">{{ 'Portal de'|t }}<br>{{ 'Desarrolladores'|t }}</h1>
+    <p class="login-subtitle">{{ 'Accede a APIs y recursos de Bayteq'|t }}</p>
+
+    {# Login Form Card #}
+    <div class="login-card">
+      {{ page.content }}
+
+      {# If using custom form, uncomment below #}
+      {#
+      <form method="post" class="login-form">
+        <div class="form-group">
+          <label class="form-label" for="email">{{ 'Correo electrónico'|t }}</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="tu@ejemplo.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">{{ 'Contraseña'|t }}</label>
+          <div class="form-password-wrapper">
+            <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required>
+            <button type="button" class="password-toggle" aria-label="{{ 'Toggle password visibility'|t }}">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="login-options">
+          <label class="form-checkbox">
+            <input type="checkbox" name="remember">
+            <span class="form-checkbox__label">{{ 'Recordarme'|t }}</span>
+          </label>
+          <a href="/user/password" class="login-forgot">{{ '¿Olvidaste tu contraseña?'|t }}</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block login-submit">
+          {{ 'Iniciar Sesión'|t }}
+        </button>
+      </form>
+      #}
+    </div>
+
+    {# Terms #}
+    <p class="login-terms">
+      {{ 'Al continuar, aceptas nuestros'|t }}
+      <a href="/terminos">{{ 'Términos'|t }}</a>
+      {{ 'y'|t }}
+      <a href="/privacidad">{{ 'Política de Privacidad'|t }}</a>
+    </p>
+  </div>
+</div>

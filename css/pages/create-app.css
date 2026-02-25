@@ -1,0 +1,69 @@
+/* ============================================
+   CREATE APP PAGE
+   ============================================ */
+
+.create-app-page {
+  padding: var(--spacing-2xl) 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.create-app-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.create-app-header__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.create-app-header__desc {
+  font-size: var(--font-size-base);
+  color: var(--color-gray-600);
+}
+
+/* Environment Selection */
+.env-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+/* API Selection */
+.api-select-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Plan Selection */
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+}
+
+/* Terms Section */
+.terms-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Form Actions */
+.create-app-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+  .env-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,30 @@
+global-styling:
+  version: 1.0
+  css:
+    base:
+      css/base/reset.css: {}
+      css/base/variables.css: {}
+    component:
+      css/components/header.css: {}
+      css/components/footer.css: {}
+      css/components/buttons.css: {}
+      css/components/forms.css: {}
+      css/components/cards.css: {}
+      css/components/code-block.css: {}
+      css/components/badges.css: {}
+      css/components/sidebar.css: {}
+    theme:
+      css/pages/login.css: {}
+      css/pages/home.css: {}
+      css/pages/api-catalog.css: {}
+      css/pages/api-detail.css: {}
+      css/pages/docs.css: {}
+      css/pages/create-app.css: {}
+
+global-scripts:
+  version: 1.0
+  js:
+    js/bayteq.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

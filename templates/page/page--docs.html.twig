@@ -1,0 +1,126 @@
+{#
+/**
+ * @file
+ * Bayteq Developer Portal - Documentation Page.
+ *
+ * Pantalla 5: Documentación Técnica
+ * Incluye: sidebar navegación, contenido con secciones, bloques de código, callouts
+ */
+#}
+
+{% extends "page.html.twig" %}
+
+{% block content %}
+<div class="docs-page">
+  <div class="container">
+    {# Page Header #}
+    <div class="docs-page__header">
+      <h1 class="docs-page__title">{{ 'Documentación Técnica'|t }}</h1>
+      <p class="docs-page__desc">{{ 'Guías completas, referencias de API y mejores prácticas para desarrolladores'|t }}</p>
+    </div>
+
+    <div class="docs-layout">
+      {# ========== SIDEBAR ========== #}
+      <aside class="sidebar docs-sidebar">
+        {# Search #}
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+          <input type="text" class="form-input" placeholder="{{ 'Buscar en docs...'|t }}">
+        </div>
+
+        {# Guides Section #}
+        <div class="docs-sidebar__section is-open">
+          <div class="docs-sidebar__header" data-toggle="guides">
+            <span class="docs-sidebar__title">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V15a1 1 0 11-2 0V4.804z"/></svg>
+              {{ 'Guías'|t }}
+            </span>
+            <svg class="docs-sidebar__chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="docs-sidebar__list">
+            <a href="#primeros-pasos" class="docs-sidebar__link is-active">{{ 'Primeros pasos'|t }}</a>
+            <a href="#autenticacion" class="docs-sidebar__link">{{ 'Autenticación'|t }}</a>
+            <a href="#rate-limiting" class="docs-sidebar__link">Rate limiting</a>
+            <a href="#webhooks" class="docs-sidebar__link">Webhooks</a>
+          </div>
+        </div>
+
+        {# API Reference Section #}
+        <div class="docs-sidebar__section">
+          <div class="docs-sidebar__header" data-toggle="api-ref">
+            <span class="docs-sidebar__title">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633z" clip-rule="evenodd"/></svg>
+              {{ 'Referencia de APIs'|t }}
+            </span>
+            <svg class="docs-sidebar__chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+        </div>
+      </aside>
+
+      {# ========== DOCS CONTENT ========== #}
+      <div class="docs-content">
+        <h1 id="primeros-pasos">{{ 'Primeros Pasos'|t }}</h1>
+        <p>{{ 'Bienvenido a la documentación de Bayteq Developer Portal. Esta guía te ayudará a comenzar con nuestras APIs en pocos minutos.'|t }}</p>
+
+        <h2>{{ '1. Crear una cuenta'|t }}</h2>
+        <p>{{ 'El primer paso es registrarte en el portal de desarrolladores. Una vez registrado, tendrás acceso al dashboard donde podrás gestionar tus aplicaciones y credenciales.'|t }}</p>
+
+        <div class="docs-note">
+          <p><strong>{{ 'Nota:'|t }}</strong> {{ 'La creación de cuenta es gratuita y te da acceso inmediato a todas las APIs en modo sandbox.'|t }}</p>
+        </div>
+
+        <h2>{{ '2. Obtener credenciales'|t }}</h2>
+        <p>{{ 'Después de crear tu cuenta, necesitarás generar una API Key para autenticar tus peticiones. Puedes crear múltiples keys para diferentes entornos.'|t }}</p>
+
+        <ol>
+          <li>{{ 'Accede al dashboard de desarrolladores'|t }}</li>
+          <li>{{ 'Ve a la sección "Credenciales"'|t }}</li>
+          <li>{{ 'Haz clic en "Generar nueva API Key"'|t }}</li>
+          <li>{{ 'Guarda la key en un lugar seguro (solo se muestra una vez)'|t }}</li>
+        </ol>
+
+        <h2>{{ '3. Primera petición'|t }}</h2>
+        <p>{{ 'Una vez que tengas tu API Key, puedes hacer tu primera petición. Aquí hay un ejemplo usando cURL:'|t }}</p>
+
+        <div class="code-block">
+          <div class="code-block__header">
+            <span class="code-block__lang">Shell</span>
+            <button class="code-block__copy" data-copy-target="code-first-request">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/></svg>
+              {{ 'Copiar'|t }}
+            </button>
+          </div>
+          <div class="code-block__body">
+            <pre id="code-first-request">curl -X GET https://api.bayteq.com/v1/status \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json"</pre>
+          </div>
+        </div>
+
+        <h3>{{ 'Respuesta esperada'|t }}</h3>
+        <p>{{ 'Si todo funciona correctamente, deberías recibir una respuesta similar a esta:'|t }}</p>
+
+        <div class="code-block">
+          <div class="code-block__header">
+            <span class="code-block__lang">JSON Response</span>
+            <button class="code-block__copy" data-copy-target="code-response">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/></svg>
+              {{ 'Copiar'|t }}
+            </button>
+          </div>
+          <div class="code-block__body">
+            <pre id="code-response">{
+  "status": "ok",
+  "version": "2.1.0",
+  "environment": "sandbox",
+  "timestamp": "2026-02-10T15:30:00Z"
+}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ page.content }}
+{% endblock %}

@@ -1,0 +1,80 @@
+/* ============================================
+   BADGES & TAGS
+   ============================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 0.125rem 0.5rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+/* Version Badge */
+.badge-version {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-700);
+  border: 1px solid var(--color-gray-200);
+}
+
+/* Status Badges */
+.badge-active {
+  background-color: #ECFDF5;
+  color: #047857;
+}
+
+.badge-active::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: #10B981;
+}
+
+.badge-deprecated {
+  background-color: #FEF2F2;
+  color: #DC2626;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Tags */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-600);
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-gray-200);
+}
+
+.tag:hover {
+  background-color: var(--color-gray-200);
+}
+
+/* Star Rating */
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-600);
+}
+
+.rating__star {
+  color: #F59E0B;
+}
+
+.rating__value {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-800);
+}
+
+.rating__count {
+  color: var(--color-gray-500);
+}

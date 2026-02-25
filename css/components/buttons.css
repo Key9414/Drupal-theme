@@ -1,0 +1,112 @@
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: 0.625rem 1.25rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent-red);
+  outline-offset: 2px;
+}
+
+/* Primary Button (Red) */
+.btn-primary {
+  background-color: var(--color-accent-red);
+  color: var(--color-white);
+  border-color: var(--color-accent-red);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-red-hover);
+  border-color: var(--color-accent-red-hover);
+  color: var(--color-white);
+}
+
+/* Secondary / Outlined Button */
+.btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-gray-800);
+  border-color: var(--color-gray-300);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-400);
+  color: var(--color-gray-900);
+}
+
+/* Ghost Button */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-gray-600);
+  border-color: transparent;
+}
+
+.btn-ghost:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-900);
+}
+
+/* Link Style Button */
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--color-accent-red);
+  padding: 0;
+  font-weight: var(--font-weight-medium);
+}
+
+.btn-link:hover {
+  color: var(--color-accent-red-hover);
+  text-decoration: underline;
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: var(--font-size-xs);
+}
+
+.btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: var(--font-size-base);
+}
+
+.btn-xl {
+  padding: 1rem 2rem;
+  font-size: var(--font-size-lg);
+}
+
+/* Full Width */
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+/* Icon in button */
+.btn svg,
+.btn .btn-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Arrow icon */
+.btn .arrow-right::after {
+  content: '\2192';
+  margin-left: var(--spacing-xs);
+}

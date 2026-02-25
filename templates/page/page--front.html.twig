@@ -1,0 +1,135 @@
+{#
+/**
+ * @file
+ * Bayteq Developer Portal - Home Page (Front page).
+ *
+ * Pantalla 2: Home - Hero, Stats, Accesos Rápidos, Bienvenida
+ */
+#}
+
+{# Include base page layout (header/footer) #}
+{% extends "page.html.twig" %}
+
+{% block content %}
+{# ========== HERO SECTION ========== #}
+<section class="hero">
+  <div class="container">
+    <div class="hero__content">
+      <h1 class="hero__title">
+        {{ 'Construye el futuro con las'|t }} <span class="highlight">{{ 'APIs de Bayteq'|t }}</span>
+      </h1>
+      <p class="hero__subtitle">
+        {{ 'Accede a nuestro ecosistema de APIs empresariales. Integraciones rápidas, documentación completa y soporte técnico dedicado.'|t }}
+      </p>
+      <div class="hero__actions">
+        <a href="/apis" class="btn btn-primary btn-lg">
+          {{ 'Explorar Catálogo'|t }}
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+        <a href="/documentacion" class="btn btn-secondary btn-lg">
+          {{ 'Ver Documentación'|t }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ========== STATS BAR ========== #}
+<section class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-item__value">24+</div>
+        <div class="stat-item__label">{{ 'APIs Disponibles'|t }}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__value">1,200+</div>
+        <div class="stat-item__label">{{ 'Desarrolladores'|t }}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__value">5M+</div>
+        <div class="stat-item__label">{{ 'Peticiones/día'|t }}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__value">99.9%</div>
+        <div class="stat-item__label">{{ 'Uptime'|t }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ========== QUICK ACCESS ========== #}
+<section class="quick-access">
+  <div class="container">
+    <h2 class="section-title">{{ 'Accesos Rápidos'|t }}</h2>
+    <div class="quick-access__grid">
+      <a href="/apis" class="quick-card">
+        <div class="quick-card__icon quick-card__icon--api">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </div>
+        <h3 class="quick-card__title">{{ 'Explorar APIs'|t }}</h3>
+        <p class="quick-card__desc">{{ 'Descubre nuestro catálogo completo de APIs disponibles'|t }}</p>
+        <span class="quick-card__link">{{ 'Ir ahora'|t }} &rarr;</span>
+      </a>
+
+      <a href="/documentacion" class="quick-card">
+        <div class="quick-card__icon quick-card__icon--docs">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/></svg>
+        </div>
+        <h3 class="quick-card__title">{{ 'Documentación'|t }}</h3>
+        <p class="quick-card__desc">{{ 'Guías técnicas, tutoriales y referencias completas'|t }}</p>
+        <span class="quick-card__link">{{ 'Ir ahora'|t }} &rarr;</span>
+      </a>
+
+      <a href="/crear-app" class="quick-card">
+        <div class="quick-card__icon quick-card__icon--app">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
+        </div>
+        <h3 class="quick-card__title">{{ 'Crear Aplicación'|t }}</h3>
+        <p class="quick-card__desc">{{ 'Registra tu app y obtén credenciales de acceso'|t }}</p>
+        <span class="quick-card__link">{{ 'Ir ahora'|t }} &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ========== WELCOME SECTION ========== #}
+<section class="welcome-section">
+  <div class="container">
+    <div class="welcome-card">
+      <h2 class="welcome-card__title">{{ 'Bienvenido al Portal de Desarrolladores'|t }}</h2>
+      <p class="welcome-card__text">
+        {{ 'Bayteq pone a tu disposición un conjunto robusto de APIs empresariales diseñadas para acelerar tu desarrollo. Ya sea que estés construyendo aplicaciones móviles, integraciones web o soluciones IoT, nuestras APIs te proporcionan la base que necesitas.'|t }}
+      </p>
+      <p class="welcome-card__text">
+        {{ 'Comienza explorando nuestro catálogo, revisa la documentación técnica y crea tu primera aplicación en minutos. Nuestro equipo está aquí para apoyarte en cada paso.'|t }}
+      </p>
+      <div class="welcome-features">
+        <div class="welcome-feature">
+          <svg class="welcome-feature__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <div>
+            <div class="welcome-feature__title">{{ 'Seguridad Enterprise'|t }}</div>
+            <div class="welcome-feature__desc">{{ 'OAuth 2.0, API Keys y control de acceso granular'|t }}</div>
+          </div>
+        </div>
+        <div class="welcome-feature">
+          <svg class="welcome-feature__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+          <div>
+            <div class="welcome-feature__title">{{ 'Alta Disponibilidad'|t }}</div>
+            <div class="welcome-feature__desc">{{ 'SLA del 99.9% con monitoreo 24/7'|t }}</div>
+          </div>
+        </div>
+        <div class="welcome-feature">
+          <svg class="welcome-feature__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"/></svg>
+          <div>
+            <div class="welcome-feature__title">{{ 'Escalabilidad'|t }}</div>
+            <div class="welcome-feature__desc">{{ 'Infraestructura preparada para crecer'|t }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ page.content }}
+{% endblock %}

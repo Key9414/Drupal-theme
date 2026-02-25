@@ -1,0 +1,223 @@
+{#
+/**
+ * @file
+ * Bayteq Developer Portal - Create App Page.
+ *
+ * Pantalla 6: Crear Nueva Aplicación
+ * Formulario multi-sección: Info básica, Entorno, Seleccionar APIs, Plan, Términos
+ */
+#}
+
+{% extends "page.html.twig" %}
+
+{% block content %}
+<div class="create-app-page">
+  <div class="container">
+    {# Page Header #}
+    <div class="create-app-header">
+      <h1 class="create-app-header__title">{{ 'Crear Nueva Aplicación'|t }}</h1>
+      <p class="create-app-header__desc">{{ 'Registra tu aplicación para obtener credenciales y acceder a nuestras APIs'|t }}</p>
+    </div>
+
+    <form method="post" class="create-app-form" id="create-app-form">
+      {# ========== BASIC INFO ========== #}
+      <div class="form-card">
+        <h2 class="form-card__title">{{ 'Información Básica'|t }}</h2>
+
+        <div class="form-group">
+          <label class="form-label" for="app-name">
+            {{ 'Nombre de la aplicación'|t }} <span class="required">*</span>
+          </label>
+          <input type="text" id="app-name" name="app_name" class="form-input" placeholder="{{ 'Mi Aplicación'|t }}" required>
+          <p class="form-helper">{{ 'Un nombre descriptivo para identificar tu aplicación'|t }}</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="app-description">
+            {{ 'Descripción'|t }} <span class="required">*</span>
+          </label>
+          <textarea id="app-description" name="app_description" class="form-textarea" placeholder="{{ 'Describe qué hace tu aplicación y cómo usará las APIs...'|t }}" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="app-website">{{ 'Sitio web'|t }}</label>
+          <input type="url" id="app-website" name="app_website" class="form-input" placeholder="https://mi-app.com">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="app-callback">Callback URL (OAuth)</label>
+          <input type="url" id="app-callback" name="app_callback" class="form-input" placeholder="https://mi-app.com/callback">
+          <p class="form-helper">{{ 'URL a la que se redirigirá después de la autenticación OAuth'|t }}</p>
+        </div>
+      </div>
+
+      {# ========== ENVIRONMENT ========== #}
+      <div class="form-card">
+        <h2 class="form-card__title">{{ 'Entorno'|t }}</h2>
+        <div class="env-grid">
+          <div class="env-card is-selected" data-env="sandbox">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <h3 class="env-card__name">Sandbox</h3>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="color:var(--color-primary-dark)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <p class="env-card__desc">{{ 'Entorno de pruebas. Ideal para desarrollo y testing.'|t }}</p>
+          </div>
+          <div class="env-card" data-env="production">
+            <h3 class="env-card__name">{{ 'Producción'|t }}</h3>
+            <p class="env-card__desc">{{ 'Entorno real con datos y transacciones reales.'|t }}</p>
+          </div>
+        </div>
+      </div>
+
+      {# ========== SELECT APIS ========== #}
+      <div class="form-card">
+        <h2 class="form-card__title">{{ 'Seleccionar APIs'|t }} <span class="required">*</span></h2>
+        <p class="form-helper" style="margin-bottom:var(--spacing-lg)">{{ 'Elige las APIs que tu aplicación necesita acceder'|t }}</p>
+
+        <div class="api-select-list">
+          <label class="api-select-card">
+            <input type="checkbox" name="apis[]" value="payment" style="width:18px;height:18px;accent-color:var(--color-primary-dark)">
+            <div class="api-select-card__info">
+              <div class="api-select-card__name">Payment API</div>
+              <div class="api-select-card__desc">{{ 'Procesamiento de pagos'|t }}</div>
+            </div>
+          </label>
+          <label class="api-select-card">
+            <input type="checkbox" name="apis[]" value="identity" style="width:18px;height:18px;accent-color:var(--color-primary-dark)">
+            <div class="api-select-card__info">
+              <div class="api-select-card__name">Identity API</div>
+              <div class="api-select-card__desc">{{ 'Autenticación de usuarios'|t }}</div>
+            </div>
+          </label>
+          <label class="api-select-card">
+            <input type="checkbox" name="apis[]" value="data" style="width:18px;height:18px;accent-color:var(--color-primary-dark)">
+            <div class="api-select-card__info">
+              <div class="api-select-card__name">Data API</div>
+              <div class="api-select-card__desc">{{ 'Gestión de datos'|t }}</div>
+            </div>
+          </label>
+          <label class="api-select-card">
+            <input type="checkbox" name="apis[]" value="notification" style="width:18px;height:18px;accent-color:var(--color-primary-dark)">
+            <div class="api-select-card__info">
+              <div class="api-select-card__name">Notification API</div>
+              <div class="api-select-card__desc">{{ 'Envío de notificaciones'|t }}</div>
+            </div>
+          </label>
+          <label class="api-select-card">
+            <input type="checkbox" name="apis[]" value="analytics" style="width:18px;height:18px;accent-color:var(--color-primary-dark)">
+            <div class="api-select-card__info">
+              <div class="api-select-card__name">Analytics API</div>
+              <div class="api-select-card__desc">{{ 'Análisis y métricas'|t }}</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      {# ========== SELECT PLAN ========== #}
+      <div class="form-card">
+        <h2 class="form-card__title">{{ 'Seleccionar Plan'|t }}</h2>
+        <div class="plan-grid">
+          {# Free Plan #}
+          <div class="plan-card is-selected" data-plan="free">
+            <div class="plan-card__check">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <h3 class="plan-card__name">Free</h3>
+            <div class="plan-card__price">$0<span class="plan-card__period">/{{ 'mes'|t }}</span></div>
+            <div class="plan-card__features">
+              <div class="plan-card__feature">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                60 req/min
+              </div>
+              <div class="plan-card__feature">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                {{ '10K req/día'|t }}
+              </div>
+              <div class="plan-card__feature">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                {{ 'Soporte por email'|t }}
+              </div>
+            </div>
+          </div>
+
+          {# Starter Plan #}
+          <div class="plan-card" data-plan="starter">
+            <div class="plan-card__check">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <h3 class="plan-card__name">Starter</h3>
+            <div class="plan-card__price">$49<span class="plan-card__period">/{{ 'mes'|t }}</span></div>
+            <div class="plan-card__features">
+              <div class="plan-card__feature">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                300 req/min
+              </div>
+              <div class="plan-card__feature">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                {{ '100K req/día'|t }}
+              </div>
+              <div class="plan-card__feature">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                {{ 'Soporte prioritario'|t }}
+              </div>
+            </div>
+          </div>
+
+          {# Professional Plan #}
+          <div class="plan-card" data-plan="professional">
+            <div class="plan-card__check">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <h3 class="plan-card__name">Professional</h3>
+            <div class="plan-card__price">$199<span class="plan-card__period">/{{ 'mes'|t }}</span></div>
+            <div class="plan-card__features">
+              <div class="plan-card__feature">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                1000 req/min
+              </div>
+              <div class="plan-card__feature">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                {{ '1M req/día'|t }}
+              </div>
+              <div class="plan-card__feature">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                {{ 'Soporte 24/7'|t }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {# ========== TERMS & SUBMIT ========== #}
+      <div class="form-card">
+        <div class="terms-section">
+          <label class="form-checkbox">
+            <input type="checkbox" name="accept_terms" required>
+            <span class="form-checkbox__label">
+              {{ 'Acepto los'|t }}
+              <a href="/terminos">{{ 'términos de servicio'|t }}</a>
+              {{ 'y la'|t }}
+              <a href="/privacidad">{{ 'política de privacidad'|t }}</a>
+            </span>
+          </label>
+        </div>
+
+        <div class="form-info">
+          <svg class="form-info__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+          <div>
+            <p class="form-info__title">{{ 'Información importante'|t }}</p>
+            <p class="form-info__text">{{ 'Después de crear tu aplicación, recibirás tus credenciales API (Client ID y Client Secret). Guárdalas en un lugar seguro ya que el Client Secret solo se mostrará una vez.'|t }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="create-app-actions">
+        <a href="/apis" class="btn btn-secondary">{{ 'Cancelar'|t }}</a>
+        <button type="submit" class="btn btn-primary btn-lg">{{ 'Crear Aplicación'|t }}</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{{ page.content }}
+{% endblock %}

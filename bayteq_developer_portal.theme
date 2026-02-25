@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Bayteq Developer Portal theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_preprocess_HOOK() for html.html.twig.
+ */
+function bayteq_developer_portal_preprocess_html(&$variables) {
+  $route = \Drupal::routeMatch()->getRouteName();
+
+  // Add body classes based on route.
+  if ($route === 'user.login') {
+    $variables['attributes']['class'][] = 'page-login';
+  }
+  if ($route === 'user.register') {
+    $variables['attributes']['class'][] = 'page-register';
+  }
+  if ($route === 'user.pass') {
+    $variables['attributes']['class'][] = 'page-forgot-password';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for page.html.twig.
+ */
+function bayteq_developer_portal_preprocess_page(&$variables) {
+  $variables['logo_url'] = '/' . \Drupal::theme()->getActiveTheme()->getPath() . '/logo.svg';
+
+  $route = \Drupal::routeMatch()->getRouteName();
+  $variables['is_login_page'] = ($route === 'user.login');
+  $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+
+  // Get current user info.
+  $current_user = \Drupal::currentUser();
+  $variables['user_logged_in'] = $current_user->isAuthenticated();
+  $variables['user_name'] = $current_user->getDisplayName();
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bayteq_developer_portal_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'user_login_form') {
+    $form['name']['#attributes']['placeholder'] = 'tu@ejemplo.com';
+    $form['name']['#title'] = t('Correo electrónico');
+    $form['pass']['#attributes']['placeholder'] = '••••••••';
+    $form['pass']['#title'] = t('Contraseña');
+    $form['actions']['submit']['#value'] = t('Iniciar Sesión');
+    $form['actions']['submit']['#attributes']['class'][] = 'btn-primary';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for page templates.
+ */
+function bayteq_developer_portal_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route === 'user.login') {
+    $suggestions[] = 'page__user__login';
+  }
+
+  // Add content type based suggestions.
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node && is_object($node)) {
+    $suggestions[] = 'page__node__' . $node->bundle();
+  }
+}
